@@ -1,4 +1,3 @@
-
 // ==========================================
 // IDENTITAS PENGGUNA
 // ==========================================
@@ -82,12 +81,66 @@ function formatPeriod(period) {
 }
 
 // ==========================================
+// FILTER LAPORAN (KENDARAAN DAN PERIODE)
+// ==========================================
+
+const filterVehicleSelect = document.getElementById("filterVehicle");
+const startDateInput = document.getElementById("startDate");
+const endDateInput = document.getElementById("endDate");
+const clearFiltersButton = document.getElementById("clearFilters");
+
+// Mengisi pilihan kendaraan pada filter
+function updateVehicleFilter() {
+    const selected = filterVehicleSelect.value;
+
+    filterVehicleSelect.innerHTML =
+        '<option value="">Semua Kendaraan</option>';
+
+    getVehicles().forEach(vehicle => {
+        const option = document.createElement("option");
+
+        option.value = vehicle.plate;
+        option.textContent = vehicle.plate + " - " + vehicle.name;
+
+        filterVehicleSelect.appendChild(option);
+    });
+
+    filterVehicleSelect.value = selected;
+}
+
+// Menyaring riwayat servis sesuai filter yang dipilih
+function filterServices(services) {
+    const vehicle = filterVehicleSelect.value;
+    const startDate = startDateInput.value;
+    const endDate = endDateInput.value;
+
+    return services.filter(service => {
+        const matchVehicle =
+            vehicle === "" || service.vehicle === vehicle;
+
+        const matchStart =
+            startDate === "" || service.date >= startDate;
+
+        const matchEnd =
+            endDate === "" || service.date <= endDate;
+
+        return matchVehicle && matchStart && matchEnd;
+    });
+}
+
+// ==========================================
 // RINGKASAN LAPORAN
 // ==========================================
 
 function displayReport() {
-    const services = getServices();
-    const vehicles = getVehicles();
+    const services = filterServices(getServices());
+
+    // Jika kendaraan tertentu dipilih, daftar kendaraan hanya satu
+    const selectedPlate = filterVehicleSelect.value;
+
+    const vehicles = getVehicles().filter(vehicle =>
+        selectedPlate === "" || vehicle.plate === selectedPlate
+    );
 
     const totalCost = services.reduce(
         (total, service) =>
@@ -108,6 +161,7 @@ function displayReport() {
         totalVehicles;
 
     displayPeriodSummary(services);
+    displayVehicleSummary(services, vehicles);
     displayServiceSummary(services);
 }
 
@@ -161,6 +215,58 @@ function displayPeriodSummary(services) {
             formatPeriod(period),
             data.count,
             formatRupiah(data.total)
+        ];
+
+        values.forEach(value => {
+            const cell = document.createElement("td");
+            cell.textContent = value;
+            row.appendChild(cell);
+        });
+
+        tableBody.appendChild(row);
+    });
+}
+
+// ==========================================
+// RINGKASAN BERDASARKAN KENDARAAN
+// ==========================================
+
+function displayVehicleSummary(services, vehicles) {
+    const tableBody = document.getElementById("vehicleSummaryBody");
+
+    tableBody.innerHTML = "";
+
+    if (vehicles.length === 0) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+
+        cell.colSpan = 5;
+        cell.textContent = "Belum ada data kendaraan.";
+
+        row.appendChild(cell);
+        tableBody.appendChild(row);
+        return;
+    }
+
+    vehicles.forEach((vehicle, index) => {
+        const vehicleServices = services.filter(service =>
+            service.vehicle === vehicle.plate
+        );
+
+        const total = vehicleServices.reduce(
+            (sum, service) =>
+                sum + Number(service.cost || 0),
+            0
+        );
+
+        const row = document.createElement("tr");
+
+        const values = [
+            index + 1,
+            vehicle.plate,
+            vehicle.name,
+            vehicleServices.length,
+            formatRupiah(total)
         ];
 
         values.forEach(value => {
@@ -233,7 +339,24 @@ function displayServiceSummary(services) {
     });
 }
 
+// ==========================================
+// MENGAKTIFKAN FILTER
+// ==========================================
+
+filterVehicleSelect.addEventListener("change", displayReport);
+startDateInput.addEventListener("change", displayReport);
+endDateInput.addEventListener("change", displayReport);
+
+clearFiltersButton.addEventListener("click", function() {
+    filterVehicleSelect.value = "";
+    startDateInput.value = "";
+    endDateInput.value = "";
+
+    displayReport();
+});
+
 // Jalankan laporan
 if (loggedInUser && currentUser) {
+    updateVehicleFilter();
     displayReport();
 }
