@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,6 +8,36 @@
 
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/laporan.css">
+
+    <style>
+        /* Gaya filter laporan */
+        .report-filter {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .report-filter select,
+        .report-filter input[type="date"] {
+            padding: 8px 10px;
+            border: 1px solid #cfd6dd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .report-filter button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            background: #243f5a;
+            color: #ffffff;
+            font-size: 14px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -60,6 +89,27 @@
 
             <h1>Laporan Servis Kendaraan</h1>
 
+            <!-- FILTER LAPORAN -->
+            <section class="report-section">
+
+                <h2>Filter Laporan</h2>
+
+                <div class="report-filter">
+                    <select id="filterVehicle">
+                        <option value="">Semua Kendaraan</option>
+                    </select>
+
+                    <label for="startDate">Dari tanggal:</label>
+                    <input type="date" id="startDate">
+
+                    <label for="endDate">Sampai tanggal:</label>
+                    <input type="date" id="endDate">
+
+                    <button type="button" id="clearFilters">Reset Filter</button>
+                </div>
+
+            </section>
+
             <!-- RINGKASAN LAPORAN -->
             <section class="report-cards">
 
@@ -97,6 +147,30 @@
                         </thead>
 
                         <tbody id="periodSummaryBody">
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- RINGKASAN BERDASARKAN KENDARAAN -->
+            <section class="report-section">
+
+                <h2>Ringkasan Berdasarkan Kendaraan</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>No. Polisi</th>
+                                <th>Merk / Tipe</th>
+                                <th>Jumlah Servis</th>
+                                <th>Total Biaya</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="vehicleSummaryBody">
                         </tbody>
                     </table>
                 </div>
