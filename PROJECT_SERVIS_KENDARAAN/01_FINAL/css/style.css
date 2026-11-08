@@ -1,0 +1,139 @@
+
+/* Mengatur tampilan dasar halaman */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f3f5;
+    color: #333;
+}
+
+/* Mengatur posisi halaman login */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Kotak utama login */
+.auth-card {
+    background-color: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Logo aplikasi */
+.logo {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* Judul aplikasi */
+h1 {
+    font-size: 21px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+    color: #263445;
+}
+
+h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* Input username dan password */
+.form-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Pesan kesalahan */
+.error-message {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* Tombol masuk */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #263f59;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1b2e42;
+}
+
+/* Link registrasi */
+.auth-link {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.auth-link a {
+    color: #263f59;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* Bagian persetujuan syarat dan ketentuan */
+.terms-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.terms-group input {
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.terms-group label {
+    cursor: pointer;
+}

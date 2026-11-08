@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Aplikasi Servis Kendaraan</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="brand">
+            <img src="assets/logo.jpg" alt="Logo">
+            <h2>Aplikasi Pencatatan Servis Kendaraan Pribadi</h2>
+        </div>
+
+        <div class="header-right">
+            <input
+                type="text"
+                id="dashboardSearch"
+                placeholder="Cari kendaraan, servis, bengkel..."
+            >
+
+            <div class="user-menu" id="userName">
+                Nama Pengguna ▾
+            </div>
+        </div>
+
+    </header>
+
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <nav>
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="pengelolaan.html">Pengelolaan Data</a>
+                <a href="laporan.html">Laporan</a>
+                <a href="index.html" id="logoutButton">Logout</a>
+            </nav>
+        </aside>
+
+        <!-- KONTEN UTAMA -->
+        <main class="main-content">
+
+            <p class="breadcrumb">Beranda &gt; Dashboard</p>
+
+            <h1>Dashboard</h1>
+
+            <!-- KARTU RINGKASAN -->
+            <section class="stats-container">
+
+                <div class="stat-card">
+                    <h3>Total Biaya Servis Bulan Ini</h3>
+                    <p id="totalMonthlyCost">Rp 0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Jumlah Kendaraan</h3>
+                    <p id="totalVehicles">0 Unit</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Servis Terakhir</h3>
+                    <p id="lastServiceDate">Belum ada servis</p>
+                </div>
+
+            </section>
+
+            <!-- DAFTAR KENDARAAN -->
+            <section class="table-section">
+
+                <h2>Daftar Kendaraan</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>No. Polisi</th>
+                                <th>Merk / Tipe</th>
+                                <th>Tahun</th>
+                                <th>Servis Terakhir</th>
+                                <th>Kilometer Terakhir</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="vehicleTableBody">
+                            <tr>
+                                <td colspan="6">Memuat data kendaraan...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- RIWAYAT SERVIS -->
+            <section class="table-section">
+
+                <div class="section-heading">
+                    <h2>Riwayat Servis Terbaru</h2>
+                    <a href="pengelolaan.html">Lihat Semua</a>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Kendaraan</th>
+                                <th>Jenis Servis</th>
+                                <th>Bengkel</th>
+                                <th>Biaya</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recentServiceBody">
+                            <tr>
+                                <td colspan="5">Memuat riwayat servis...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

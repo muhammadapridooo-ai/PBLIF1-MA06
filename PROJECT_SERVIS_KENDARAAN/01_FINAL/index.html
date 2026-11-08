@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Aplikasi Servis Kendaraan</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main class="auth-container">
+
+        <section class="auth-card">
+
+            <img src="assets/logo.jpg" alt="Logo Aplikasi" class="logo">
+
+            <h1>Aplikasi Pencatatan Servis Kendaraan Pribadi</h1>
+
+            <h2>Login</h2>
+            <p class="subtitle">
+                Masuk untuk mengakses akun Anda
+            </p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Masukkan username Anda"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Masukkan password Anda"
+                        required
+                    >
+                </div>
+
+                <p id="errorMessage" class="error-message">
+                    Username atau password salah
+                </p>
+
+                <button type="submit">Masuk</button>
+
+            </form>
+
+            <p class="auth-link">
+                Belum punya akun?
+                <a href="registrasi.html">Registrasi</a>
+            </p>
+
+        </section>
+
+    </main>
+<script src="js/auth.js"></script>
+</body>
+</html>

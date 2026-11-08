@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengelolaan Data - Servis Kendaraan</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/pengelolaan.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="brand">
+            <img src="assets/logo.jpg" alt="Logo">
+            <h2>Servis Kendaraan</h2>
+        </div>
+
+        <div class="header-right">
+            <input type="text" placeholder="Cari kendaraan, servis, bengkel...">
+            <div class="user-menu" id="userName">Nama Pengguna ▾</div>
+        </div>
+    </header>
+
+    <!-- LAYOUT SIDEBAR DAN KONTEN -->
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="pengelolaan.html" class="active">Pengelolaan Data</a>
+                <a href="laporan.html">Laporan</a>
+                <a href="index.html" id="logoutButton">Logout</a>
+            </nav>
+        </aside>
+
+        <!-- KONTEN UTAMA -->
+        <main class="main-content">
+
+            <h1>Pengelolaan Data Utama</h1>
+
+            <!-- DATA KENDARAAN -->
+            <section class="table-section">
+                <div class="section-heading">
+                    <h2>Daftar Kendaraan</h2>
+                    <button type="button" class="add-button" id="addVehicleButton">
+                        + Tambah Kendaraan
+                    </button>
+                </div>
+
+                <div class="management-form" id="vehicleFormPanel" hidden>
+                    <h3 id="vehicleFormTitle">Tambah Kendaraan</h3>
+
+                    <form id="vehicleForm">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="vehiclePlate">Nomor Polisi</label>
+                                <input type="text" id="vehiclePlate"
+                                    placeholder="Contoh: BP 1234 AB" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="vehicleName">Merk / Tipe Kendaraan</label>
+                                <input type="text" id="vehicleName"
+                                    placeholder="Contoh: Toyota Avanza" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="vehicleYear">Tahun Kendaraan</label>
+                                <input type="number" id="vehicleYear"
+                                    min="1900" max="2100"
+                                    placeholder="Contoh: 2022" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="vehicleKilometer">Kilometer</label>
+                                <input type="number" id="vehicleKilometer"
+                                    min="0" step="1"
+                                    placeholder="Contoh: 15000" required>
+                            </div>
+                        </div>
+
+                        <p class="form-message" id="vehicleFormMessage"></p>
+
+                        <div class="form-actions">
+                            <button type="submit" class="save-button">Simpan</button>
+                            <button type="button" class="cancel-button"
+                                id="cancelVehicleButton">Batal</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>No Polisi</th>
+                                <th>Merk / Tipe</th>
+                                <th>Tahun</th>
+                                <th>Kilometer</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vehicleTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- DATA JENIS SERVIS -->
+            <section class="table-section">
+                <div class="section-heading">
+                    <h2>Daftar Jenis Servis</h2>
+                    <button type="button" class="add-button" id="addServiceTypeButton">
+                        + Tambah Jenis Servis
+                    </button>
+                </div>
+
+                <div class="management-form" id="serviceTypeFormPanel" hidden>
+                    <h3 id="serviceTypeFormTitle">Tambah Jenis Servis</h3>
+
+                    <form id="serviceTypeForm">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="serviceTypeName">Nama Jenis Servis</label>
+                                <input type="text" id="serviceTypeName"
+                                    placeholder="Contoh: Ganti Oli" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="serviceTypeDescription">Keterangan</label>
+                                <input type="text" id="serviceTypeDescription"
+                                    placeholder="Keterangan jenis servis" required>
+                            </div>
+                        </div>
+
+                        <p class="form-message" id="serviceTypeFormMessage"></p>
+
+                        <div class="form-actions">
+                            <button type="submit" class="save-button">Simpan</button>
+                            <button type="button" class="cancel-button"
+                                id="cancelServiceTypeButton">Batal</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Servis</th>
+                                <th>Keterangan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="serviceTypeTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- RIWAYAT SERVIS -->
+            <section class="table-section">
+                <div class="section-heading">
+                    <h2>Daftar Riwayat Servis</h2>
+                    <a href="form.html" class="add-button">+ Tambah Data</a>
+                </div>
+
+                <div class="filter-container">
+                    <h3>Filter Riwayat Servis</h3>
+
+                    <div class="filter-group">
+                        <input type="text" id="searchWorkshop"
+                            placeholder="Cari nama bengkel...">
+
+                        <select id="filterVehicle">
+                            <option value="">Semua Kendaraan</option>
+                        </select>
+
+                        <select id="filterServiceType">
+                            <option value="">Semua Jenis Servis</option>
+                        </select>
+
+                        <label for="startDate">Dari tanggal:</label>
+                        <input type="date" id="startDate">
+
+                        <label for="endDate">Sampai tanggal:</label>
+                        <input type="date" id="endDate">
+
+                        <button type="button" id="clearFilters">Reset Filter</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Kendaraan</th>
+                                <th>Km</th>
+                                <th>Jenis Servis</th>
+                                <th>Bengkel</th>
+                                <th>Biaya</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="serviceTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <p class="action-legend">✎ Edit data &nbsp;&nbsp; ✕ Hapus data</p>
+
+        </main>
+    </div>
+
+    <script src="js/pengelolaan.js"></script>
+</body>
+</html>

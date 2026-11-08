@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laporan Servis - Aplikasi Servis Kendaraan</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/laporan.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="brand">
+            <img src="assets/logo.jpg" alt="Logo">
+            <h2>Aplikasi Pencatatan Servis Kendaraan Pribadi</h2>
+        </div>
+
+        <div class="header-right">
+            <input type="text" placeholder="Cari kendaraan, servis, bengkel...">
+
+            <div class="user-menu" id="userName">
+                Nama Pengguna ▾
+            </div>
+        </div>
+
+    </header>
+
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+
+                <a href="pengelolaan.html">
+                    Pengelolaan Data
+                </a>
+
+                <a href="laporan.html" class="active">
+                    Laporan
+                </a>
+
+                <a href="index.html" id="logoutButton">
+                    Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- KONTEN UTAMA -->
+        <main class="main-content">
+
+            <p class="breadcrumb">
+                Beranda &gt; Laporan
+            </p>
+
+            <h1>Laporan Servis Kendaraan</h1>
+
+            <!-- RINGKASAN LAPORAN -->
+            <section class="report-cards">
+
+                <div class="report-card">
+                    <h3>Total Biaya Servis</h3>
+                    <p id="totalCost">Rp 0</p>
+                </div>
+
+                <div class="report-card">
+                    <h3>Jumlah Transaksi Servis</h3>
+                    <p id="totalTransactions">0</p>
+                </div>
+
+                <div class="report-card">
+                    <h3>Jumlah Kendaraan</h3>
+                    <p id="totalVehicles">0</p>
+                </div>
+
+            </section>
+
+            <!-- RINGKASAN BERDASARKAN PERIODE -->
+            <section class="report-section">
+
+                <h2>Ringkasan Servis Berdasarkan Periode</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Periode</th>
+                                <th>Jumlah Servis</th>
+                                <th>Total Biaya</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="periodSummaryBody">
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- RINGKASAN BERDASARKAN JENIS SERVIS -->
+            <section class="report-section">
+
+                <h2>Ringkasan Berdasarkan Jenis Servis</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Jenis Servis</th>
+                                <th>Jumlah Transaksi</th>
+                                <th>Total Biaya</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="serviceSummaryBody">
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/laporan.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi - Aplikasi Servis Kendaraan</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main class="auth-container">
+
+        <section class="auth-card">
+
+            <img src="assets/logo.jpg" alt="Logo Aplikasi" class="logo">
+
+            <h1>Aplikasi Pencatatan Servis Kendaraan Pribadi</h1>
+
+            <h2>Registrasi</h2>
+
+            <p class="subtitle">
+                Buat akun baru untuk mulai mencatat servis kendaraan Anda.
+            </p>
+<p id="registerMessage" class="error-message"></p>
+            <form id="registerForm">
+
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap *</label>
+                    <input
+                        type="text"
+                        id="nama"
+                        placeholder="Masukkan nama lengkap Anda"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username *</label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Masukkan username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Masukkan password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Konfirmasi Password *</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Masukkan kembali password"
+                        required
+                    >
+                </div>
+
+                <div class="terms-group">
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <label for="terms">
+                        Saya setuju dengan Syarat dan Ketentuan yang berlaku.
+                    </label>
+                </div>
+
+                <button type="submit">Daftar</button>
+
+            </form>
+
+            <p class="auth-link">
+                Sudah punya akun?
+                <a href="index.html">Login</a>
+            </p>
+
+        </section>
+
+    </main>
+<script src="js/auth.js"></script>
+</body>
+</html>
